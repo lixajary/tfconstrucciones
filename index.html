@@ -177,16 +177,7 @@ body{margin:0}aside,details,main,summary{display:block}template{display:none}a:a
       letter-spacing: -1px;
       color: white;
     }
-    .main section.page2 h2 {
-      color: rgba(255,255,255,0.85);
-      text-align: center;
-      line-height: 160%;
-      font-weight: 100;
-    }
-    .viewing-page-2 .back{
-      background: rgba(0, 0, 0, 0.25);
-      color: #FFF;
-      }
+    
     .main section.page3 {
       background:white url(img/image14.jpg) no-repeat center;
 	  background-size: auto 100%;
@@ -575,6 +566,28 @@ div.desc {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    
+    font-weight: bold;
+    font-size: 15px;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+	z-index: 1;
+}
+
+.menu-button{
+	font-size:15px;
+	position: absolute;
+    top: 0;
+    left: 0;
+    text-align: left;
+    display: block;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     background: rgba(255, 255, 255, 0.25);
     font-weight: bold;
     font-size: 13px;
@@ -582,8 +595,10 @@ div.desc {
     -moz-transition: all 500ms ease-in-out;
     -o-transition: all 500ms ease-in-out;
     transition: all 500ms ease-in-out;
-	z-index: 1;
+	z-index: 2;
+	cursor:pointer;
 }
+
 
 @media only screen and (max-width: 700px){
     .responsive {
@@ -607,15 +622,66 @@ div.desc {
 }
 
 
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: gray;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
 	</style>
 
 
 
 </head>
 <body>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">Inicio</a>
+  <a href="#">Nuestra Historia</a>
+  <a href="#">Clients</a>
+  <a href="contacto.html">Contacto</a>
+</div>
+
   <div class="wrapper">
   
-  <div class="back">Arq. Miguel Angel Torres Figueroa - Tel. 8123915008 - miguel.torres@tfconstrucciones.com</div>
+  <span class="menu-button" style="font-size:cursor:pointer" onclick="openNav()">&#9776; </span>
+  <div class="back"> Arq. Miguel Angel Torres Figueroa - Tel. 8123915008 - miguel.torres@tfconstrucciones.com</div>
+
+
   
 	  <div class="main onepage-wrapper" style="position: relative;">
       <section class="page1 ops-section" data-index="1">
@@ -1410,6 +1476,15 @@ div.desc {
      responsiveFallback: false
    });
 
+   
+   function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+   
 	</script>
 	
 </body>
